@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+     <style>
+    .scrollspy-example {
+      position: relative;
+      height: 400px;
+      overflow-y: auto;
+    }
+  </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark custom-navbar">
+  <div class="container-fluid justify-content-center">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+<div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active text-white" aria-current="page" href="#">Flight Price Prediction</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+          <div class="container py-5">
+  <h3 class="mb-4">Fill Your Choices</h3>
+  <div class="row">
+    <!-- Sidebar List -->
+    <div class="col-md-3">
+      <div id="list-example" class="list-group " style="font-size: larger;">
+        <a class="list-group-item list-group-item-action" href="#list-item-1">Your Departure Date</a>
+        <a class="list-group-item list-group-item-action" href="#list-item-2">Your Departure Location</a>
+        <a class="list-group-item list-group-item-action" href="#list-item-3">Your Destination Location</a>
+        <a class="list-group-item list-group-item-action" href="#list-item-4">Your Travel Class</a>
+        <a class="list-group-item list-group-item-action" href="#list-item-5">Your Passenger Type</a>
+        <a class="list-group-item list-group-item-action" href="#list-item-6">Your Seat Preference</a>
+      </div>
+    </div>
+
+    <!-- Scrollable Content -->
+    <div class="col-md-9">
+      <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-offset="0" tabindex="0" class="scrollspy-example" style="border:1px solid #ddd; padding: 10px;">
+        <div class="mb-5 mt-5">
+        <h4>1.</h4>
+        <p class="fs-4">Enter The Departure Date</p>
+         <div class="card text-center" id="list-item-1">
+  <div class="card-header">
+    
+  </div>
+  <div class="card-body"  id="list-item-1">
+   <img src="{{ url_for('static', filename='images/date.png') }}" class="img-fluid rounded-start p-2" alt="Flight Image" style="height: 250px; width:350px; ">
+    <h5 class="card-title">Departure Date</h5>
+   
+  </div>
+  <div class="card-footer "  id="list-item-1">
+     <form method="POST" action="/predict">
+        <label for="dep_date" class="form-label fs-4 fw-bold">Departure Date</label>
+        <input type="date" id="dep_date"  name="dep_date"class="form-control-lg fs-4 mb-3" placeholder="dd-mm-yyyy">
+        
+  </div>
+</div>
+</div>
+
+
+  <div class="mb-5 mt-5">
+        <h4>2.</h4>
+        <p class="fs-4">Enter The Departure Airport</p>
+         <div class="card text-center" id="list-item-2">
+  <div class="card-header">
+    
+  </div>
+  <div class="card-body"  id="list-item-2">
+   <img src="{{ url_for('static', filename='images/takeoff.png') }}" class="img-fluid rounded-start p-2" alt="Flight Image" style="height: 250px; width:350px; ">
+    <h5 class="card-title">Take off Location</h5>
+   
+  </div>
+  <div class="card-footer "  id="list-item-2">
+   
+             <label class="form-label fs-4 fw-bold">Take Off</label>
+          
+                <select name="dep_place" class="form-control-lg fs-4 mb-3" placeholder="FROM">
+                    <option value="" disabled selected>FROM</option>
+                    <option>Mumbai</option>
+                    <option>Delhi</option>
+                    <option>Bangalore</option>
+                    <option>Kolkata</option>
+                </select>
+      
+     
+  </div>
+</div>
+</div>
+
+ <div class="mb-5 mt-5">
+        <h4>3.</h4>
+        <p class="fs-4">Enter The Arrival Airport</p>
+         <div class="card text-center" id="list-item-3">
+  <div class="card-header">
+    
+  </div>
+  <div class="card-body"  id="list-item-3">
+   <img src="{{ url_for('static', filename='images/lands.png') }}" class="img-fluid rounded-start p-2" alt="Flight Image" style="height: 250px; width:350px; ">
+    <h5 class="card-title">Landing Location</h5>
+   
+  </div>
+  <div class="card-footer "  id="list-item-3">
+    
+             <label class="form-label fs-4 fw-bold">Landing On</label>
+          
+                <select name="dest_place" class="form-control-lg fs-4 mb-3" placeholder="TO">
+                    <option value="" disabled selected>TO</option>
+                   <option>Delhi</option>
+                    <option>Mumbai</option>
+                    <option>Kolkata</option>
+                    <option>Bangalore</option>
+                </select>
+    
+     
+  </div>
+</div>
+</div>
+
+
+<div class="mb-5 mt-5">
+        <h4>4.</h4>
+        <p class="fs-4">Enter The Desired Class</p>
+         <div class="card text-center" id="list-item-4">
+  <div class="card-header">
+    
+  </div>
+  <div class="card-body"  id="list-item-4">
+   <img src="{{ url_for('static', filename='images/class.png') }}" class="img-fluid rounded-start p-2" alt="Flight Image" style="height: 250px; width:350px; ">
+    <h5 class="card-title"></h5>
+   
+  </div>
+  <div class="card-footer "  id="list-item-4">
+    
+             <label class="form-label fs-4 fw-bold"> Travel class</label>
+          
+                <select name="travel_class" class="form-control-lg fs-4 mb-3" placeholder="Travel_class">
+                    <option value="" disabled selected>Travel class</option>
+                    <option>economy</option>
+                    <option>business</option>
+                </select>
+       
+     
+  </div>
+</div>
+</div>
+
+
+
+<div class="mb-5 mt-5">
+        <h4>5.</h4>
+        <p class="fs-4">Enter The Passenger Type</p>
+         <div class="card text-center" id="list-item-5">
+  <div class="card-header">
+    
+  </div>
+  <div class="card-body"  id="list-item-5">
+   <img src="{{ url_for('static', filename='images/pass.png') }}" class="img-fluid rounded-start p-2" alt="Flight Image" style="height: 250px; width:350px; ">
+    <h5 class="card-title"></h5>
+   
+  </div>
+  <div class="card-footer "  id="list-item-5">
+     
+             <label class="form-label fs-4 fw-bold">Passenger Type</label>
+          
+                <select name="passenger_type" class="form-control-lg fs-4 mb-3" placeholder="passenger_type">
+                    <option value="" disabled selected>Your Passenger Type </option>
+                    <option>student</option>
+                    <option>army</option>
+                    <option>senior</option>
+                </select>
+       
+     
+  </div>
+</div>
+</div>
+
+
+<div class="mb-5 mt-5">
+        <h4>6.</h4>
+        <p class="fs-4">Enter Your seat preference</p>
+         <div class="card text-center" id="list-item-6">
+  <div class="card-header">
+    
+  </div>
+  <div class="card-body"  id="list-item-6">
+   <img src="{{ url_for('static', filename='images/seat.png') }}" class="img-fluid rounded-start p-2" alt="Flight Image" style="height: 250px; width:350px; ">
+    <h5 class="card-title"></h5>
+   
+  </div>
+  <div class="card-footer "  id="list-item-6">
+     
+             <label class="form-label fs-4 fw-bold">Seat Preference</label>
+          
+                <select name="seat_type" class="form-control-lg fs-4 mb-3" placeholder="seat_type">
+                    <option value="" disabled selected>Your Seat Preference </option>
+                     <option>window</option>
+                    <option>middle</option>
+                    <option>outside</option>
+                </select>
+     
+     
+  </div>
+</div>
+</div>
+
+
+           
+
+
+    
+      <button type="submit" class="btn btn-primary w-100">Predict Price</button>
+      </form>
+
+
+
+
+
+
+
+
+
+     
+                
+        {% if price %}
+    <div class="alert alert-success mt-4">
+        <h4>Predicted Ticket Price: ₹{{ price }}</h4>
+    </div>
+    {% endif %}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    
+</body>
+</html>

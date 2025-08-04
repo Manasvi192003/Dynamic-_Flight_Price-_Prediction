@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block title %}Flight Price Predictor{% endblock %}
+
+{% block content %}
+<div class="card shadow p-4">
+    <h2 class="mb-4 text-primary">Predict Your Ticket Price</h2>
+    <form method="POST">
+
+        <div class="row mb-3">
+            <div class="col">
+                <label for="dep_date" class="form-label">Departure Date</label>
+                <input type="date" name="dep_date" class="form-control" required>
+            </div>
+            <div class="col">
+                <label for="travel_class" class="form-label">Class</label>
+                <select name="travel_class" class="form-select">
+                    <option>economy</option>
+                    <option>business</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <label class="form-label">From</label>
+                <select name="dep_place" class="form-select">
+                    <option>Mumbai</option>
+                    <option>Delhi</option>
+                    <option>Bangalore</option>
+                    <option>Kolkata</option>
+                </select>
+            </div>
+            <div class="col">
+                <label class="form-label">To</label>
+                <select name="dest_place" class="form-select">
+                    <option>Delhi</option>
+                    <option>Mumbai</option>
+                    <option>Kolkata</option>
+                    <option>Bangalore</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <label class="form-label">Passenger Type</label>
+                <select name="passenger_type" class="form-select">
+                    <option>student</option>
+                    <option>army</option>
+                    <option>senior</option>
+                </select>
+            </div>
+            <div class="col">
+                <label class="form-label">Seat Preference</label>
+                <select name="seat_type" class="form-select">
+                    <option>window</option>
+                    <option>middle</option>
+                    <option>outside</option>
+                </select>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Predict Price</button>
+    </form>
+
+    {% if price %}
+    <div class="alert alert-success mt-4">
+        <h4>Predicted Ticket Price: ₹{{ price }}</h4>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+
+
+
